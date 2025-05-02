@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centralny Rejestr Elektryków</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f1f1f1;
+    }
+    .dataTables_filter input {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Centralny Rejestr Elektryków</h1>
+
+  <table id="elektrycy" class="display">
+    <thead>
+      <tr>
+        <th>Lp</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Telefon</th>
+        <th>Email</th>
+        <th>Numer uprawnień</th>
+        <th>Rodzaj uprawnień</th>
+        <th>Województwo</th>
+        <th>Miasto</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Jan</td>
+        <td>Kowalski</td>
+        <td>600123456</td>
+        <td>jan.kowalski@example.com</td>
+        <td>E/12345/2024</td>
+        <td>Eksploatacja</td>
+        <td>Mazowieckie</td>
+        <td>Warszawa</td>
+        <td>Zweryfikowane</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Agnieszka</td>
+        <td>Nowak</td>
+        <td>601234567</td>
+        <td>agnieszka.nowak@example.com</td>
+        <td>D/54321/2023</td>
+        <td>Dozór</td>
+        <td>Wielkopolskie</td>
+        <td>Poznań</td>
+        <td>W trakcie weryfikacji</td>
+      </tr>
+      <!-- Dodaj więcej wpisów według potrzeb -->
+    </tbody>
+  </table>
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#elektrycy').DataTable({
+        language: {
+          url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/pl.json'
+        }
+      });
+    });
+  </script>
+</body>
+</html>
