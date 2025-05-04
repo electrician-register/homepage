@@ -23,13 +23,22 @@
     header {
       display: flex;
       align-items: center;
+      justify-content: center;
       padding: 1px 20px;
-      background: transparent; /* Gradient z body widoczny */
+      background: transparent;
     }
 
     header img {
-      height: 200px; /* Powiększone logo */
-      max-width: none; /* Usunięcie ograniczenia szerokości */
+      height: 200px;
+      max-width: none;
+    }
+
+    .wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
     }
 
     .grid {
@@ -37,9 +46,8 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 40px;
-      padding: 20px 20px;
+      padding: 0 20px;
       text-align: center;
-      flex: 1;
     }
 
     .box {
@@ -87,6 +95,10 @@
         justify-content: center;
       }
 
+      .wrapper {
+        padding: 10px 0;
+      }
+
       .grid {
         flex-direction: column;
         align-items: center;
@@ -100,21 +112,23 @@
     <img src="logo.png" alt="Logo Centralny Rejestr Elektryków" />
   </header>
 
-  <!-- Główna sekcja z trzema kafelkami -->
-  <main class="grid">
-    <div class="box">
-      <img src="orzel_1.png" alt="Orzeł 1" />
-      <p>Jestem elektrykiem, chcę się zarejestrować</p>
-    </div>
-    <div class="box">
-      <img src="orzel_2.png" alt="Orzeł 2" />
-      <p>Szukam elektryka</p>
-    </div>
-    <div class="box">
-      <img src="orzel_3.png" alt="Orzeł 3" />
-      <p>Chcę sprawdzić, czy mój elektryk posiada odpowiednie uprawnienia</p>
-    </div>
-  </main>
+  <!-- Sekcja główna z wyśrodkowaniem pionowym -->
+  <div class="wrapper">
+    <main class="grid">
+      <div class="box">
+        <img src="orzel_1.png" alt="Orzeł 1" />
+        <p>Jestem elektrykiem, chcę się zarejestrować</p>
+      </div>
+      <div class="box">
+        <img src="orzel_2.png" alt="Orzeł 2" />
+        <p>Szukam elektryka</p>
+      </div>
+      <div class="box">
+        <img src="orzel_3.png" alt="Orzeł 3" />
+        <p>Chcę sprawdzić, czy mój elektryk posiada odpowiednie uprawnienia</p>
+      </div>
+    </main>
+  </div>
 
   <!-- Stopka -->
   <footer>
@@ -124,10 +138,3 @@
   </footer>
 </body>
 </html>
-
-
-
-
-
-
-
