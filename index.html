@@ -5,72 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Centralny Rejestr Elektryków</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #000;
-      color: #fff;
-      line-height: 1.6;
+      background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc);
+      color: #000;
     }
 
     header {
-      background: linear-gradient(to right, #0077ff, #00bbff);
-      padding: 20px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      padding: 40px 20px;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
+    header img {
+      height: 80px;
+      margin-right: 20px;
     }
 
-    .logo img {
-      height: 60px;
-      margin-right: 15px;
-    }
-
-    .header-text {
-      flex: 1;
-    }
-
-    .header-text h1 {
-      margin: 0;
+    header h1 {
       font-size: 2em;
     }
 
-    .section {
-      padding: 40px 20px;
+    header span {
+      display: block;
+      font-size: 1.2em;
+      color: #0077cc;
+    }
+
+    .grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 60px 20px;
       text-align: center;
     }
 
-    .section:nth-child(even) {
-      background-color: #111;
+    .box {
+      background-color: #e6e6e6;
+      padding: 40px 20px;
+      width: 250px;
+      border: 1px solid #ccc;
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #00bbff;
-      color: #000;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background 0.3s ease;
+    .box img {
+      width: 100px;
+      margin-bottom: 20px;
     }
 
-    .btn:hover {
-      background-color: #0099cc;
+    .box p {
+      font-size: 1em;
+      color: #003366;
     }
 
     footer {
-      background-color: #111;
+      background-color: #222;
+      color: #ccc;
       text-align: center;
-      padding: 20px;
+      padding: 30px 20px;
       font-size: 0.9em;
+    }
+
+    footer a {
+      color: #00bbff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 768px) {
@@ -79,58 +88,52 @@
         text-align: center;
       }
 
-      .logo {
-        justify-content: center;
-        margin-bottom: 10px;
+      header img {
+        margin-bottom: 20px;
       }
 
-      .header-text h1 {
-        font-size: 1.6em;
-      }
-
-      .btn {
-        width: 100%;
-        box-sizing: border-box;
+      .grid {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
-
+  <!-- Nagłówek z logo i tytułem -->
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Logo" />
-    </div>
-    <div class="header-text">
+    <img src="4e5b8f63-5719-4dab-bc51-175a52e4e1de.png" alt="Logo">
+    <div>
       <h1>Centralny Rejestr Elektryków</h1>
-      <p>Publiczna baza elektryków z potwierdzonymi uprawnieniami</p>
+      <span>w Polsce</span>
     </div>
   </header>
 
-  <section class="section">
-    <h2>Cel projektu</h2>
-    <p>Ułatwiamy weryfikację uprawnień elektryków w Polsce. Dzięki naszej bazie możesz sprawdzić, czy dany specjalista posiada aktualne kwalifikacje.</p>
-    <a href="#rejestr" class="btn">Przejdź do rejestru</a>
-  </section>
+  <!-- Sekcja z trzema blokami -->
+  <div class="grid">
+    <div class="box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Herb_Polski.svg/1024px-Herb_Polski.svg.png" alt="Orzeł">
+      <p>Jestem elektrykiem, chcę się zarejestrować</p>
+    </div>
+    <div class="box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Herb_Polski.svg/1024px-Herb_Polski.svg.png" alt="Orzeł">
+      <p>Szukam elektryka</p>
+    </div>
+    <div class="box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Herb_Polski.svg/1024px-Herb_Polski.svg.png" alt="Orzeł">
+      <p>Chcę sprawdzić, czy mój elektryk posiada odpowiednie uprawnienia</p>
+    </div>
+  </div>
 
-  <section class="section">
-    <h2>Dodaj elektryka</h2>
-    <p>Jesteś elektrykiem? Dodaj swoje dane do bazy i zwiększ swoją wiarygodność w oczach klientów.</p>
-    <a href="#kontakt" class="btn">Dodaj wpis</a>
-  </section>
-
-  <section class="section" id="kontakt">
-    <h2>Kontakt</h2>
-    <p>Masz pytania? Skontaktuj się z nami:</p>
-    <p>Email: <a href="mailto:kontakt@rejestr-elektrykow.pl" style="color:#00bbff;">kontakt@rejestr-elektrykow.pl</a></p>
-  </section>
-
+  <!-- Stopka -->
   <footer>
-    &copy; 2025 Centralny Rejestr Elektryków | Regulamin | Polityka prywatności
+    &copy; 2025 Centralny Rejestr Elektryków
+    <br />
+    <a href="#">Regulamin</a> | <a href="#">Polityka prywatności</a>
   </footer>
-
 </body>
 </html>
+
 
 
 
