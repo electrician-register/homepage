@@ -15,13 +15,30 @@
 
     header {
       background: linear-gradient(to right, #0077ff, #00bbff);
-      padding: 40px 20px;
-      text-align: center;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
 
-    header h1 {
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 60px;
+      margin-right: 15px;
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    .header-text h1 {
       margin: 0;
-      font-size: 2.5em;
+      font-size: 2em;
     }
 
     .section {
@@ -56,13 +73,19 @@
       font-size: 0.9em;
     }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.6em;
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
       }
 
-      .section {
-        padding: 20px 10px;
+      .logo {
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+
+      .header-text h1 {
+        font-size: 1.6em;
       }
 
       .btn {
@@ -75,8 +98,13 @@
 <body>
 
   <header>
-    <h1>Centralny Rejestr Elektryków</h1>
-    <p>Publiczna baza elektryków z potwierdzonymi uprawnieniami</p>
+    <div class="logo">
+      <img src="logo.png" alt="Logo" />
+    </div>
+    <div class="header-text">
+      <h1>Centralny Rejestr Elektryków</h1>
+      <p>Publiczna baza elektryków z potwierdzonymi uprawnieniami</p>
+    </div>
   </header>
 
   <section class="section">
@@ -103,5 +131,6 @@
 
 </body>
 </html>
+
 
 
