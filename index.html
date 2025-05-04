@@ -11,20 +11,22 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      height: 100%;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc);
       color: #000;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
 
     header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 1px 20px;
+      padding: 10px 20px;
       background: transparent;
     }
 
@@ -33,12 +35,11 @@
       max-width: none;
     }
 
-    .wrapper {
+    .content {
       flex: 1;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      padding: 20px 0;
     }
 
     .grid {
@@ -95,10 +96,6 @@
         justify-content: center;
       }
 
-      .wrapper {
-        padding: 10px 0;
-      }
-
       .grid {
         flex-direction: column;
         align-items: center;
@@ -107,13 +104,13 @@
   </style>
 </head>
 <body>
-  <!-- Górna część strony z logo -->
+  <!-- Logo u góry po lewej -->
   <header>
     <img src="logo.png" alt="Logo Centralny Rejestr Elektryków" />
   </header>
 
-  <!-- Sekcja główna z wyśrodkowaniem pionowym -->
-  <div class="wrapper">
+  <!-- Sekcja środkowa z wyśrodkowanymi kafelkami -->
+  <div class="content">
     <main class="grid">
       <div class="box">
         <img src="orzel_1.png" alt="Orzeł 1" />
