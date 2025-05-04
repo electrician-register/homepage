@@ -15,27 +15,20 @@
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc);
       color: #000;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
       display: flex;
       align-items: center;
-      padding: 40px 20px;
+      padding: 20px;
+      background-color: #fff;
     }
 
     header img {
       height: 80px;
-      margin-right: 20px;
-    }
-
-    header h1 {
-      font-size: 2em;
-    }
-
-    header span {
-      display: block;
-      font-size: 1.2em;
-      color: #0077cc;
     }
 
     .grid {
@@ -45,6 +38,7 @@
       gap: 40px;
       padding: 60px 20px;
       text-align: center;
+      flex: 1;
     }
 
     .box {
@@ -52,6 +46,11 @@
       padding: 40px 20px;
       width: 250px;
       border: 1px solid #ccc;
+      transition: transform 0.2s ease;
+    }
+
+    .box:hover {
+      transform: scale(1.05);
     }
 
     .box img {
@@ -84,12 +83,7 @@
 
     @media (max-width: 768px) {
       header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      header img {
-        margin-bottom: 20px;
+        justify-content: center;
       }
 
       .grid {
@@ -100,36 +94,36 @@
   </style>
 </head>
 <body>
-  <!-- logo  -->
+  <!-- Górna część strony z logo -->
   <header>
-    <img src="logo.png" alt="Logo główne"> <!-- Tu zmienisz logo, jeśli chcesz użyć innego -->
-  <!-- Sekcja z trzema blokami -->
-  <div class="grid">
+    <img src="logo.png" alt="Logo Centralny Rejestr Elektryków" />
+  </header>
+
+  <!-- Główna sekcja z trzema kafelkami -->
+  <main class="grid">
     <div class="box">
-      <!-- Tu zmienisz obraz orła na pierwszy z trzech -->
-      <img src="orzel_1.png" alt="Orzeł 1"> <!-- Zmieniasz nazwę obrazu orła, np. orzel_1.png -->
+      <img src="orzel_1.png" alt="Orzeł 1" />
       <p>Jestem elektrykiem, chcę się zarejestrować</p>
     </div>
     <div class="box">
-      <!-- Tu zmienisz obraz orła na drugi z trzech -->
-      <img src="orzel_2.png" alt="Orzeł 2"> <!-- Zmieniasz nazwę obrazu orła, np. orzel_2.png -->
+      <img src="orzel_2.png" alt="Orzeł 2" />
       <p>Szukam elektryka</p>
     </div>
     <div class="box">
-      <!-- Tu zmienisz obraz orła na trzeci z trzech -->
-      <img src="orzel_3.png" alt="Orzeł 3"> <!-- Zmieniasz nazwę obrazu orła, np. orzel_3.png -->
+      <img src="orzel_3.png" alt="Orzeł 3" />
       <p>Chcę sprawdzić, czy mój elektryk posiada odpowiednie uprawnienia</p>
     </div>
-  </div>
+  </main>
 
   <!-- Stopka -->
   <footer>
-    &copy; 2025 Centralny Rejestr Elektryków
-    <br />
-    <a href="#">Regulamin</a> | <a href="#">Polityka prywatności</a>
+    &copy; 2025 Centralny Rejestr Elektryków<br />
+    <a href="#">Regulamin</a> |
+    <a href="#">Polityka prywatności</a>
   </footer>
 </body>
 </html>
+
 
 
 
