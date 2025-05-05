@@ -1,0 +1,15 @@
+{
+  "name": "Centralny Rejestr Elektryków",
+  "short_name": "Rejestr Elektryków",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f1f3f4",
+  "theme_color": "#f1f3f4",
+  "icons": [
+    {
+      "src": "logo%20RBT.png",
+      "sizes": "182x182",
+      "type": "image/png"
+    }
+  ]
+}
