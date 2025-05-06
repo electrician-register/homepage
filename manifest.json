@@ -7,7 +7,7 @@
   "theme_color": "#f1f3f4",
   "icons": [
     {
-      "src": "logo%20RBT.png",
+      "src": "logo.png",
       "sizes": "182x182",
       "type": "image/png"
     }
