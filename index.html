@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Centralny Rejestr Elektryków</title>
   <link rel="icon" href="favicon.png" type="image/png">
- <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json">
   <style>
     * {
       margin: 0;
@@ -15,14 +15,9 @@
 
     html, body {
       height: 100%;
-    }
-
-    body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc);
       color: #000;
-      display: flex;
-      flex-direction: column;
     }
 
     header {
@@ -33,9 +28,15 @@
     }
 
     header img {
-      height: 200px;
-      max-width: none;
-        margin-top: -15px;  <!-- podnosi logo logo o 15px -->
+      height: 180px;
+      margin-top: -15px;
+    }
+
+    .tagline {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #003366;
     }
 
     .content {
@@ -43,32 +44,61 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      margin-top: -25px;   <!-- przybliżenie kafelek do logo -->
+      align-items: center;
+      margin-top: -20px;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95em;
+      color: #003366;
+    }
+
+    .feature img {
+      width: 24px;
+      height: 24px;
     }
 
     .grid {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 40px;
+      gap: 30px;
       padding: 0 20px;
-      text-align: center;
     }
 
     .box {
-      background-color: #e6e6e6;
+      background-color: #ffffff;
       padding: 40px 20px;
-      width: 250px;
-      border: 1px solid #ccc;
-      transition: transform 0.2s ease;
+      width: 260px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .box:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
     .box img {
-      width: 100px;
+      width: 90px;
       margin-bottom: 20px;
     }
 
@@ -81,7 +111,7 @@
       background-color: #222;
       color: #ccc;
       text-align: center;
-      padding: 10px 20px;  <!-- wielkość kontenera na stopke -->
+      padding: 10px 20px;
       font-size: 0.9em;
     }
 
@@ -100,6 +130,11 @@
         justify-content: center;
       }
 
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .grid {
         flex-direction: column;
         align-items: center;
@@ -108,13 +143,19 @@
   </style>
 </head>
 <body>
-  <!-- Górna część strony z logo -->
   <header>
     <img src="logo.png" alt="Logo Centralny Rejestr Elektryków" />
   </header>
 
-  <!-- Środkowa część z kafelkami -->
   <div class="content">
+    <div class="tagline">Zaufana baza certyfikowanych elektryków w Polsce</div>
+
+    <div class="features">
+      <div class="feature"><img src="shield.png" alt="Bezpieczeństwo" /> Bezpiecznie i legalnie</div>
+      <div class="feature"><img src="search.png" alt="Wyszukiwanie" /> Szybkie wyszukiwanie</div>
+      <div class="feature"><img src="badge.png" alt="Certyfikaty" /> Certyfikowani specjaliści</div>
+    </div>
+
     <main class="grid">
       <div class="box">
         <img src="orzel_1.png" alt="Orzeł 1" />
@@ -131,12 +172,12 @@
     </main>
   </div>
 
-  <!-- Stopka -->
   <footer>
     &copy; 2025 Centralny Rejestr Elektryków<br />
     <a href="#">Regulamin</a> |
-      <a href="#">Polityka prywatności</a> |
-      <a href="#">Kontakt</a>
+    <a href="#">Polityka prywatności</a> |
+    <a href="#">Kontakt</a>
   </footer>
 </body>
 </html>
+
