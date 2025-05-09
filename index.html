@@ -31,15 +31,8 @@
       align-items: center;
       padding: 10px 20px;
       background: transparent;
-    }
-        header logowanie {
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-      background: transparent;
-    }
 
-    header img {
+      header img {
       height: 200px;
       max-width: none;
       margin-top: -15px;
@@ -167,6 +160,59 @@
 
       }
     }
+      <!-- styl logowania-->  
+    .login-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+  <!-- styl logowania-->
+    .login-button svg {
+      width: 24px;
+      height: 24px;
+      fill: #000;
+    }
+  <!-- styl logowania-->
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+  <!-- styl logowania-->
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      width: 300px;
+    }
+  <!-- styl logowania-->
+    .modal-content button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  <!-- styl logowania-->
+    .google-button {
+      background-color: #4285F4;
+      color: white;
+      border: none;
+    }
+  <!-- styl logowania-->
+    .facebook-button {
+      background-color: #3B5998;
+      color: white;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -175,20 +221,60 @@
   <!-- Górna część strony z logo -->
   <header>
     <img src="logo.png" alt="Logo Centralny Rejestr Elektryków" />
+ </header>
 
-  </header>
-  <header logowanie>
-        <!-- ikona logowania-->
-<div class="login-button" onclick="openModal()" id="loginIcon">
+
+
+  <!-- logowanie elementy, przyciski itd -->
+
+  
+  <div class="login-button" onclick="openModal()" id="loginIcon">
   <!-- Ikona ludzika -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8V22h19.2v-2.8c0-3.2-6.4-4.8-9.6-4.8z"/>
   </svg>
-  <span class="login-name" id="loginName">Zaloguj się</span>
 </div>
 
-  </header logowanie>
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <h2>Zaloguj się</h2>
+    <button class="google-button" onclick="login('google')">Kontynuuj z Google</button>
+    <button class="facebook-button" onclick="login('facebook')">Kontynuuj z Facebook</button>
+  </div>
+</div>
 
+  
+  <!--sterowanie do logowania -->
+<script>
+  function openModal() {
+    document.getElementById('loginModal').style.display = 'flex';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('loginModal');
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  function login(provider) {
+    // Tutaj byłoby prawdziwe logowanie (np. Firebase auth)
+    // Dla demo: zamień ikonę na "zalogowano"
+    const iconDiv = document.getElementById("loginIcon");
+    iconDiv.innerHTML = `
+      <!-- Ikona z "check" -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill="green" d="M9 16.2l-4.2-4.2L3.4 13.4l5.6 5.6 12-12L19.2 5l-10.2 11.2z"/>
+      </svg>
+    `;
+    document.getElementById('loginModal').style.display = 'none';
+  }
+</script>
+
+
+
+  
+  
   <!-- Środkowa część z kafelkami -->
   <div class="content">
     <main class="grid">
