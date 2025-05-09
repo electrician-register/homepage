@@ -1,0 +1,125 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logowanie</title>
+  <style>
+    .login-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .login-button img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+    .login-name {
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      width: 300px;
+    }
+
+    .modal-content button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .google-button {
+      background-color: #4285F4;
+      color: white;
+      border: none;
+    }
+
+    .facebook-button {
+      background-color: #3B5998;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Tutaj można dołączyć header -->
+<div id="header-container"></div>
+
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <h2>Zaloguj się</h2>
+    <button class="google-button" onclick="login('google')">Kontynuuj z Google</button>
+    <button class="facebook-button" onclick="login('facebook')">Kontynuuj z Facebook</button>
+  </div>
+</div>
+
+<script>
+  // Załaduj header z zewnętrznego pliku
+  fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header-container').innerHTML = data;
+    });
+
+  // Modal logika
+  function openModal() {
+    document.getElementById('loginModal').style.display = 'flex';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('loginModal');
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  function login(provider) {
+    const iconDiv = document.getElementById("loginIcon");
+
+    const profilePhotos = {
+      google: "https://www.gstatic.com/images/branding/product/1x/avatar_square_blue_512dp.png",
+      facebook: "https://graph.facebook.com/100011111111111/picture?type=large"
+    };
+
+    const userName = provider === 'google' ? 'Jan Google' : 'Anna Facebook';
+
+    iconDiv.innerHTML = `
+      <img src="${profilePhotos[provider]}" alt="Avatar" />
+      <span class="login-name">${userName}</span>
+    `;
+
+    document.getElementById('loginModal').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
