@@ -6,7 +6,7 @@
   <title>Centralny Rejestr Elektryków</title>
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="manifest" href="manifest.json" />
-  
+
   <style>
     * {
       margin: 0;
@@ -31,18 +31,20 @@
       align-items: center;
       padding: 10px 20px;
       background: transparent;
+    }
 
-      header img {
+    header img {
       height: 200px;
       max-width: none;
       margin-top: -15px;
     }
+
     .section-text {
-  text-align: justify;
-  max-width: 300px;
-  margin: 0 auto;
-  padding: 10px;
-}
+      text-align: justify;
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 10px;
+    }
 
     .content {
       flex: 1;
@@ -86,7 +88,6 @@
       color: #003366;
     }
 
-  
     .features {
       display: flex;
       justify-content: center;
@@ -111,19 +112,20 @@
       color: #003366;
       font-size: 1.1em;
     }
+
     a.box {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
 
     .feature p {
       font-size: 0.95em;
       color: #444;
       text-align: justify;
-  max-width: 300px;
-  margin: 0 auto;
-  padding: 10px;
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 10px;
     }
 
     footer {
@@ -157,23 +159,23 @@
       .features {
         flex-direction: column;
         align-items: center;
-
       }
     }
-      <!-- styl logowania-->  
+
+    /* styl logowania */
     .login-button {
       position: absolute;
       top: 20px;
       right: 20px;
       cursor: pointer;
     }
-  <!-- styl logowania-->
+
     .login-button svg {
       width: 24px;
       height: 24px;
       fill: #000;
     }
-  <!-- styl logowania-->
+
     .modal {
       display: none;
       position: fixed;
@@ -185,7 +187,7 @@
       justify-content: center;
       align-items: center;
     }
-  <!-- styl logowania-->
+
     .modal-content {
       background-color: #fff;
       padding: 30px;
@@ -193,7 +195,7 @@
       text-align: center;
       width: 300px;
     }
-  <!-- styl logowania-->
+
     .modal-content button {
       width: 100%;
       padding: 10px;
@@ -201,13 +203,13 @@
       font-size: 16px;
       cursor: pointer;
     }
-  <!-- styl logowania-->
+
     .google-button {
       background-color: #4285F4;
       color: white;
       border: none;
     }
-  <!-- styl logowania-->
+
     .facebook-button {
       background-color: #3B5998;
       color: white;
@@ -217,68 +219,55 @@
 </head>
 <body>
 
-
   <!-- Górna część strony z logo -->
   <header>
     <img src="logo.png" alt="Logo Centralny Rejestr Elektryków" />
- </header>
-
-
+  </header>
 
   <!-- logowanie elementy, przyciski itd -->
-
-  
   <div class="login-button" onclick="openModal()" id="loginIcon">
-  <!-- Ikona ludzika -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8V22h19.2v-2.8c0-3.2-6.4-4.8-9.6-4.8z"/>
-  </svg>
-</div>
-
-<div class="modal" id="loginModal">
-  <div class="modal-content">
-    <h2>Zaloguj się</h2>
-    <button class="google-button" onclick="login('google')">Kontynuuj z Google</button>
-    <button class="facebook-button" onclick="login('facebook')">Kontynuuj z Facebook</button>
+    <!-- Ikona ludzika -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8V22h19.2v-2.8c0-3.2-6.4-4.8-9.6-4.8z"/>
+    </svg>
   </div>
-</div>
 
-  
-  <!--sterowanie do logowania -->
-<script>
-  function openModal() {
-    document.getElementById('loginModal').style.display = 'flex';
-  }
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <h2>Zaloguj się</h2>
+      <button class="google-button" onclick="login('google')">Kontynuuj z Google</button>
+      <button class="facebook-button" onclick="login('facebook')">Kontynuuj z Facebook</button>
+    </div>
+  </div>
 
-  window.onclick = function(event) {
-    const modal = document.getElementById('loginModal');
-    if (event.target === modal) {
-      modal.style.display = "none";
+  <script>
+    function openModal() {
+      document.getElementById('loginModal').style.display = 'flex';
     }
-  }
 
-  function login(provider) {
-    // Tutaj byłoby prawdziwe logowanie (np. Firebase auth)
-    // Dla demo: zamień ikonę na "zalogowano"
-    const iconDiv = document.getElementById("loginIcon");
-    iconDiv.innerHTML = `
-      <!-- Ikona z "check" -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path fill="green" d="M9 16.2l-4.2-4.2L3.4 13.4l5.6 5.6 12-12L19.2 5l-10.2 11.2z"/>
-      </svg>
-    `;
-    document.getElementById('loginModal').style.display = 'none';
-  }
-</script>
+    window.onclick = function(event) {
+      const modal = document.getElementById('loginModal');
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
 
+    function login(provider) {
+      const iconDiv = document.getElementById("loginIcon");
+      iconDiv.innerHTML = `
+        <!-- Ikona z "check" -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path fill="green" d="M9 16.2l-4.2-4.2L3.4 13.4l5.6 5.6 12-12L19.2 5l-10.2 11.2z"/>
+        </svg>
+      `;
+      document.getElementById('loginModal').style.display = 'none';
+    }
+  </script>
 
-
-  
-  
   <!-- Środkowa część z kafelkami -->
   <div class="content">
     <main class="grid">
-     <a href="rejestracja.html" class="box">
+      <a href="rejestracja.html" class="box">
         <img src="orzel_1.png" alt="Orzeł 1" />
         <p>JESTEM ELEKTRYKIEM REJESTRACJA</p>
       </a>
@@ -292,17 +281,16 @@
       </a>
     </main>
 
-    <!-- Nowa sekcja z ikonami -->
     <section class="features">
       <div class="feature">
         <img src="bezpieczenstwo.png" alt="Bezpieczeństwo" />
         <h3>Bezpieczeństwo</h3>
-        <p>Weryfikacja uprawnień i certyfikatów w czasie rzeczywistym, zgodnie z ustawą z dnia 10 kwietnia 1997r.-Prawo energetyczne (Dz.U. 2022 poz. 1385 z późn. zm.) Art. 54 tej ustawy wskazuje że osoby zajmujące się eksploatacją urządzeń, instalacji i sieci, muszą posiadać odpowiednie świadectwa kwalifikacyjne.</p>
+        <p>Weryfikacja uprawnień i certyfikatów w czasie rzeczywistym...</p>
       </div>
       <div class="feature">
         <img src="certyfikowani.png" alt="Certyfikowani fachowcy" />
         <h3>Certyfikowani fachowcy</h3>
-        <p>Wyłącznie certyfikowani i sprawdzeni fachowcy. Osoba ubiegająca się o wpis na listę certyfikowanych elektryków musi okazać potwierdzone, ważne świadectwo wydane przez komisje kwalifikacyjne powołane przez Urząd Regulacji Energetyki. Zgodnie z Rozporządzeniem Ministra Klimatu i Środowiska z dnia 1 lipca 2022 r. w sprawie świadectw kawlifikacyjnych </p>
+        <p>Wyłącznie certyfikowani i sprawdzeni fachowcy...</p>
       </div>
       <div class="feature">
         <img src="rejestracja.png" alt="Rejestracja" />
@@ -322,3 +310,4 @@
 
 </body>
 </html>
+
