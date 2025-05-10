@@ -6,7 +6,6 @@
   <title>Centralny Rejestr Elektryków</title>
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="manifest" href="manifest.json" />
-
   <style>
     * {
       margin: 0;
@@ -29,14 +28,28 @@
     .container {
       display: flex;
       align-items: center;
-      gap: 8px; /* zmniejszony odstęp */
+      gap: 8px;
       padding: 10px 20px;
     }
 
     .logo {
       width: 60px;
       display: block;
-      margin-right: 0;
+    }
+
+    .header-text {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+
+    @media (max-width: 768px) {
+      .header-text {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     .text {
@@ -44,10 +57,11 @@
       line-height: 1.2;
       font-weight: bold;
     }
-        .adres_http {
+
+    .adres_http_inline {
       font-size: 18px;
-      line-height: 1.2;
       font-weight: bold;
+      white-space: nowrap;
     }
 
     .text span {
@@ -61,7 +75,8 @@
     .blue {
       color: #003d7c;
     }
-       .red {
+
+    .red {
       color: #FF0000;
     }
 
@@ -172,23 +187,6 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .grid {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .features {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-
     .login-button {
       position: absolute;
       top: 20px;
@@ -248,17 +246,18 @@
   <!-- Górna część strony z logo -->
   <div class="container">
     <img src="logo.png" alt="Logo" class="logo" />
-    <div class="text">
-      <span class="black">Krajowy</span>
-      <span class="black">Rejestr</span>
-      <span class="black">Elektryków</span>
-      <span class="blue">w Polsce</span>
-  </div>
-  </div>
-         <div class="adres_http">
-      <span class="black">KREP</span>
-       <span class="red">.pl</span>
+    <div class="header-text">
+      <div class="text">
+        <span class="black">Krajowy</span>
+        <span class="black">Rejestr</span>
+        <span class="black">Elektryków</span>
+        <span class="blue">w Polsce</span>
+      </div>
+      <div class="adres_http_inline">
+        <span class="black">KREP</span><span class="red">.pl</span>
+      </div>
     </div>
+  </div>
 
   <!-- logowanie -->
   <div class="login-button" onclick="openModal()" id="loginIcon">
