@@ -43,18 +43,12 @@
       gap: 12px;
       flex-wrap: wrap;
       flex-direction: row;
-      position: relative; /* Dodane pozycjonowanie */
-      z-index: 1; /* Zapewnia, że tekst nie nakłada się na inne elementy */
     }
 
     @media (max-width: 768px) {
       .header-text {
         flex-direction: column;
         align-items: center;
-        text-align: center; /* Wyrównanie tekstu do środka */
-      }
-      .adres_http_inline {
-        margin-top: 10px; /* Dodatkowy odstęp na małych ekranach */
       }
     }
 
@@ -64,17 +58,21 @@
       font-weight: bold;
     }
 
-    /* Modyfikacja dla wyśrodkowania napisu KREP.pl */
-    .adres_http_inline {
-      font-size: 24px;
-      font-weight: bold;
-      white-space: nowrap;
-      display: flex;
-      justify-content: center;
-      flex-grow: 1;
-      position: relative; /* Zmiana na relative */
-      margin-top: 10px;  /* Oddzielamy napisy od siebie na małych ekranach */
-    }
+/* Modyfikacja dla wyśrodkowania napisu KREP.pl */
+.adres_http_inline {
+  font-size: 24px;
+  font-weight: bold;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+      .adres_http_inline {
+    margin-top: 10px;  /* Oddzielamy napisy od siebie na małych ekranach */
+  }
 
     .text span {
       display: block;
@@ -300,7 +298,7 @@
 
     function login(provider) {
       const iconDiv = document.getElementById("loginIcon");
-      iconDiv.innerHTML = ` 
+      iconDiv.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path fill="green" d="M9 16.2l-4.2-4.2L3.4 13.4l5.6 5.6 12-12L19.2 5l-10.2 11.2z"/>
         </svg>
@@ -342,6 +340,7 @@
         <h3>Rejestracja</h3>
         <p>Prosta rejestracja i szybki dostęp do danych</p>
       </div>
+    
     </section>
   </div>
 
