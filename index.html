@@ -58,15 +58,18 @@
       font-weight: bold;
     }
 
-  /* Tylko dla .adres_http_inline */
-  .adres_http_inline {
-    font-size: 18px;
-    font-weight: bold;
-    white-space: nowrap;
-    display: flex;
-    justify-content: center;  /* Wyśrodkowanie tekstu w poziomie */
-    flex-grow: 1;  /* Rozciąganie elementu na całą dostępną przestrzeń */
-  }
+/* Modyfikacja dla wyśrodkowania napisu KREP.pl */
+.adres_http_inline {
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
     .text span {
       display: block;
