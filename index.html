@@ -58,13 +58,15 @@
       font-weight: bold;
     }
 
-    .adres_http_inline {
-      font-size: 18px;
-      font-weight: bold;
-      white-space: nowrap;
-        text-align: center;  /* Wyśrodkowanie tekstu */
-    width: 100%;  /* Ustawienie szerokości na 100% */
-    }
+  /* Tylko dla .adres_http_inline */
+  .adres_http_inline {
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;  /* Wyśrodkowanie tekstu w poziomie */
+    flex-grow: 1;  /* Rozciąganie elementu na całą dostępną przestrzeń */
+  }
 
     .text span {
       display: block;
