@@ -9,7 +9,7 @@
 
   <style>
     * {
-      margin: 5px;
+      margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
@@ -26,19 +26,23 @@
       flex-direction: column;
     }
 
-     .container {
+    .container {
       display: flex;
       align-items: center;
-      gap: 5px;  /* <-- to kontroluje odstęp między logo a tekstem */
+      gap: 8px; /* zmniejszony odstęp */
+      padding: 10px 20px;
     }
-      .logo {
-      width: 200px;
+
+    .logo {
+      width: 100px;
+      display: block;
+      margin-right: 0;
     }
 
     .text {
       font-size: 18px;
       line-height: 1.2;
-      font-weight: bold;      /* pogrubienie */
+      font-weight: bold;
     }
 
     .text span {
@@ -51,19 +55,6 @@
 
     .blue {
       color: #003d7c;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-      background: transparent;
-    }
-
-    header img {
-      height: 200px;
-      max-width: none;
-      margin-top: -15px;
     }
 
     .section-text {
@@ -98,7 +89,7 @@
       width: 250px;
       border: 1px solid #ccc;
       border-radius: 10px;
-      transition: tra nsform 0.2s ease;
+      transition: transform 0.2s ease;
     }
 
     .box:hover {
@@ -174,8 +165,9 @@
     }
 
     @media (max-width: 768px) {
-      header {
-        justify-content: center;
+      .container {
+        flex-direction: column;
+        align-items: center;
       }
 
       .grid {
@@ -189,7 +181,6 @@
       }
     }
 
-    /* styl logowania */
     .login-button {
       position: absolute;
       top: 20px;
@@ -257,9 +248,8 @@
     </div>
   </div>
 
-  <!-- logowanie elementy, przyciski itd -->
+  <!-- logowanie -->
   <div class="login-button" onclick="openModal()" id="loginIcon">
-    <!-- Ikona ludzika -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8V22h19.2v-2.8c0-3.2-6.4-4.8-9.6-4.8z"/>
     </svg>
@@ -288,7 +278,6 @@
     function login(provider) {
       const iconDiv = document.getElementById("loginIcon");
       iconDiv.innerHTML = `
-        <!-- Ikona z "check" -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path fill="green" d="M9 16.2l-4.2-4.2L3.4 13.4l5.6 5.6 12-12L19.2 5l-10.2 11.2z"/>
         </svg>
@@ -297,7 +286,7 @@
     }
   </script>
 
-  <!-- Środkowa część z kafelkami -->
+  <!-- Środkowa część -->
   <div class="content">
     <main class="grid">
       <a href="rejestracja.html" class="box">
@@ -343,4 +332,3 @@
 
 </body>
 </html>
-
