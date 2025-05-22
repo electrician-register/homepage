@@ -4,14 +4,130 @@
   <meta charset="UTF-8" />
   <title>Rejestracja</title>
   <style>
-    /* ... (Twój CSS bez zmian) ... */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+    form {
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: #555;
+      font-weight: 600;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      transition: border 0.2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    input[type="file"] {
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #result {
+      font-weight: bold;
+      padding: 10px;
+      margin-top: 15px;
+      text-align: center;
+      border-radius: 6px;
+    }
+    .success {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .error {
+      background-color: #f44336;
+      color: white;
+    }
   </style>
 </head>
 <body>
   <form id="register-form">
     <h2>Rejestracja</h2>
 
-    <!-- ... (pozostałe pola) ... -->
+    <label for="imie">Imię:</label>
+    <input type="text" id="imie" name="imie" required>
+
+    <label for="nazwisko">Nazwisko:</label>
+    <input type="text" id="nazwisko" name="nazwisko" required>
+
+    <label for="miasto">Miasto:</label>
+    <input type="text" id="miasto" name="miasto">
+
+    <label for="wojewodztwo">Województwo:</label>
+    <input type="text" id="wojewodztwo" name="wojewodztwo">
+
+    <label for="nrE">Nr uprawnień E:</label>
+    <input type="text" id="nrE" name="nrE">
+
+    <label for="nrEPomiary">Nr uprawnień E z pomiarami:</label>
+    <input type="text" id="nrEPomiary" name="nrEPomiary">
+
+    <label for="nrD">Nr uprawnień D:</label>
+    <input type="text" id="nrD" name="nrD">
+
+    <label for="dataWaznosci">Data ważności:</label>
+    <input type="date" id="dataWaznosci" name="dataWaznosci">
+
+    <label for="wydanePrzez">Wydane przez:</label>
+    <input type="text" id="wydanePrzez" name="wydanePrzez">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+
+    <label for="telefon">Telefon:</label>
+    <input type="tel" id="telefon" name="telefon">
+
+    <label for="zajmujeSie">Zajmuje się:</label>
+    <textarea id="zajmujeSie" name="zajmujeSie" placeholder="Opis specjalizacji..."></textarea>
 
     <label for="plik">Załącz pliki:</label>
     <input type="file" id="plik" name="plik" accept="*/*" multiple>
@@ -30,7 +146,6 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 document.getElementById('register-form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  // Pobierz dane z formularza
   const imie = document.getElementById('imie').value
   const nazwisko = document.getElementById('nazwisko').value
   const miasto = document.getElementById('miasto').value
@@ -79,7 +194,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     }
   }
 
-  // Zapisz linki jako tekst (np. CSV), lub jako JSON (jeśli masz w bazie pole typu JSON) — tu jako CSV
+  // Zapisz linki jako tekst (np. CSV), lub jako JSON jeśli masz pole typu JSON
   const plikiString = plikUrls.join(',');
 
   const { error } = await supabase
