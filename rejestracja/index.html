@@ -219,7 +219,8 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     result.textContent = 'Błąd: ' + error.message
     result.classList.add('error')
   } else {
-    result.textContent = 'Zapisano pomyślnie!'
+    window.location.href = 'https://orep.pl/logowanie/';
+    */result.textContent = 'Zapisano pomyślnie!'*/
     result.classList.add('success')
     document.getElementById('register-form').reset()
   }
