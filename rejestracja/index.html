@@ -4,133 +4,17 @@
   <meta charset="UTF-8" />
   <title>Rejestracja</title>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f6f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-    }
-    form {
-      background-color: #ffffff;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 600px;
-    }
-    h2 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 5px;
-      color: #555;
-      font-weight: 600;
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="date"],
-    select,
-    textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 15px;
-      transition: border 0.2s;
-    }
-    input:focus, select:focus, textarea:focus {
-      border-color: #4CAF50;
-      outline: none;
-    }
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    input[type="file"] {
-      margin-top: 10px;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background-color: #4CAF50;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    #result {
-      font-weight: bold;
-      padding: 10px;
-      margin-top: 15px;
-      text-align: center;
-      border-radius: 6px;
-    }
-    .success {
-      background-color: #4CAF50;
-      color: white;
-    }
-    .error {
-      background-color: #f44336;
-      color: white;
-    }
+    /* ... (Twój CSS bez zmian) ... */
   </style>
 </head>
 <body>
   <form id="register-form">
     <h2>Rejestracja</h2>
 
-    <label for="imie">Imię:</label>
-    <input type="text" id="imie" name="imie" required>
+    <!-- ... (pozostałe pola) ... -->
 
-    <label for="nazwisko">Nazwisko:</label>
-    <input type="text" id="nazwisko" name="nazwisko" required>
-
-    <label for="miasto">Miasto:</label>
-    <input type="text" id="miasto" name="miasto">
-
-    <label for="wojewodztwo">Województwo:</label>
-    <input type="text" id="wojewodztwo" name="wojewodztwo">
-
-    <label for="nrE">Nr uprawnień E:</label>
-    <input type="text" id="nrE" name="nrE">
-
-    <label for="nrEPomiary">Nr uprawnień E z pomiarami:</label>
-    <input type="text" id="nrEPomiary" name="nrEPomiary">
-
-    <label for="nrD">Nr uprawnień D:</label>
-    <input type="text" id="nrD" name="nrD">
-
-    <label for="dataWaznosci">Data ważności:</label>
-    <input type="date" id="dataWaznosci" name="dataWaznosci">
-
-    <label for="wydanePrzez">Wydane przez:</label>
-    <input type="text" id="wydanePrzez" name="wydanePrzez">
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email">
-
-    <label for="telefon">Telefon:</label>
-    <input type="tel" id="telefon" name="telefon">
-
-    <label for="zajmujeSie">Zajmuje się:</label>
-    <textarea id="zajmujeSie" name="zajmujeSie" placeholder="Opis specjalizacji..."></textarea>
-
-    <label for="plik">Załącz plik:</label>
-    <input type="file" id="plik" name="plik" accept="*/*">
+    <label for="plik">Załącz pliki:</label>
+    <input type="file" id="plik" name="plik" accept="*/*" multiple>
 
     <button type="submit">Zarejestruj</button>
     <p id="result"></p>
@@ -146,6 +30,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 document.getElementById('register-form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
+  // Pobierz dane z formularza
   const imie = document.getElementById('imie').value
   const nazwisko = document.getElementById('nazwisko').value
   const miasto = document.getElementById('miasto').value
@@ -160,40 +45,42 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
   const zajmujeSie = document.getElementById('zajmujeSie').value
 
   const plikInput = document.getElementById('plik');
-  let plikUrl = null;
+  let plikUrls = [];
 
-  if (plikInput.files[0]) {
-    const file = plikInput.files[0];
-    const filePath = `permissions/${Date.now()}_${file.name}`;
+  if (plikInput.files.length > 0) {
+    for (let i = 0; i < plikInput.files.length; i++) {
+      const file = plikInput.files[i];
+      const filePath = `permissions/${Date.now()}_${i}_${file.name}`;
 
-    const { data: uploadData, error: uploadError } = await supabase.storage
-      .from('attachments')
-      .upload(filePath, file);
+      const { data: uploadData, error: uploadError } = await supabase.storage
+        .from('attachments')
+        .upload(filePath, file);
 
-    console.log("uploadData:", uploadData, "uploadError:", uploadError);
-    
-    if (uploadError) {
-      console.error('Błąd przesyłania pliku:', uploadError.message);
-      document.getElementById('result').textContent = 'Błąd przesyłania pliku: ' + uploadError.message;
-      document.getElementById('result').classList.add('error');
-      return;
+      if (uploadError) {
+        console.error('Błąd przesyłania pliku:', uploadError.message);
+        document.getElementById('result').textContent = 'Błąd przesyłania pliku: ' + uploadError.message;
+        document.getElementById('result').classList.add('error');
+        return;
+      }
+
+      const { data: publicUrlData, error: urlError } = supabase
+        .storage
+        .from('attachments')
+        .getPublicUrl(filePath);
+
+      if (urlError) {
+        console.error('Błąd generowania URL:', urlError.message);
+        document.getElementById('result').textContent = 'Błąd generowania URL: ' + urlError.message;
+        document.getElementById('result').classList.add('error');
+        return;
+      }
+
+      plikUrls.push(publicUrlData.publicUrl);
     }
-
-    const { data: publicUrlData, error: urlError } = supabase
-      .storage
-      .from('attachments')
-      .getPublicUrl(filePath);
-
-    if (urlError) {
-      console.error('Błąd generowania URL:', urlError.message);
-      document.getElementById('result').textContent = 'Błąd generowania URL: ' + urlError.message;
-      document.getElementById('result').classList.add('error');
-      return;
-    }
-
-    plikUrl = publicUrlData.publicUrl;
-    console.log('URL pliku:', plikUrl);
   }
+
+  // Zapisz linki jako tekst (np. CSV), lub jako JSON (jeśli masz w bazie pole typu JSON) — tu jako CSV
+  const plikiString = plikUrls.join(',');
 
   const { error } = await supabase
     .from('permissions')
@@ -210,7 +97,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
       email,
       telefon,
       zajmujeSie,
-      plik: plikUrl
+      plik: plikiString
     }]);
 
   const result = document.getElementById('result')
@@ -220,9 +107,6 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     result.classList.add('error')
   } else {
     window.location.href = '/logowanie';
-    //result.textContent = 'Zapisano pomyślnie!'
-    result.classList.add('success')
-    document.getElementById('register-form').reset()
   }
 });
 </script>
