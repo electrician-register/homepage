@@ -134,6 +134,7 @@
 
     <button type="submit">Zarejestruj</button>
     <p id="result"></p>
+    <p id="loading" style="display:none; text-align:center; color:#333; font-weight:bold;">Trwa rejestracja, proszę czekać...</p>
   </form>
 
 <script type="module">
@@ -145,6 +146,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 
 document.getElementById('register-form').addEventListener('submit', async (e) => {
   e.preventDefault();
+  document.getElementById('loading').style.display = 'block';
 
   const imie = document.getElementById('imie').value
   const nazwisko = document.getElementById('nazwisko').value
@@ -172,6 +174,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
         .upload(filePath, file);
 
       if (uploadError) {
+        document.getElementById('loading').style.display = 'none';
         console.error('Błąd przesyłania pliku:', uploadError.message);
         document.getElementById('result').textContent = 'Błąd przesyłania pliku: ' + uploadError.message;
         document.getElementById('result').classList.add('error');
@@ -184,6 +187,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
         .getPublicUrl(filePath);
 
       if (urlError) {
+        document.getElementById('loading').style.display = 'none';
         console.error('Błąd generowania URL:', urlError.message);
         document.getElementById('result').textContent = 'Błąd generowania URL: ' + urlError.message;
         document.getElementById('result').classList.add('error');
@@ -194,7 +198,6 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     }
   }
 
-  // Zapisz linki jako tekst (np. CSV), lub jako JSON jeśli masz pole typu JSON
   const plikiString = plikUrls.join(',');
 
   const { error } = await supabase
@@ -217,6 +220,8 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
 
   const result = document.getElementById('result')
   result.classList.remove('success', 'error')
+  document.getElementById('loading').style.display = 'none';
+
   if (error) {
     result.textContent = 'Błąd: ' + error.message
     result.classList.add('error')
@@ -226,4 +231,5 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
 });
 </script>
 </body>
-</html>
+</html>    
+
