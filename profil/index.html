@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profil – Piotr Janukowicz</title>
@@ -39,12 +38,14 @@
       left: 30px;
       background-color: white;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .profile-picture img {
+    .profile-picture svg {
       width: 100%;
       height: 100%;
-      object-fit: cover;
     }
 
     .profile-header {
@@ -119,13 +120,11 @@
 <body>
   <div class="container">
     <div class="cover-photo">
-<div class="profile-picture">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000" style="width: 100%; height: 100%; object-fit: contain; display: block;" preserveAspectRatio="xMidYMid meet">
-    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8V22h19.2v-2.8c0-3.2-6.4-4.8-9.6-4.8z"/>
-  </svg>
-</div>
-
-
+      <div class="profile-picture">
+        <!-- Osadzony SVG jako avatar -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000" preserveAspectRatio="xMidYMid meet">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8V22h19.2v-2.8c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
       </div>
     </div>
 
