@@ -33,7 +33,7 @@
       xfbml      : true,                     // Parse social plugins on this webpage.
       version    : 'v22.0'           // Use this Graph API version for this call.
     });
-
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
     FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
       statusChangeCallback(response);        // Returns the login status.
